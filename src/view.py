@@ -148,11 +148,11 @@ def generatedResponse(response):
 model_path = './src/model_files'
 tokenizer_path = './src/tokenizer_files'
 
-#model = AlbertForSequenceClassification.from_pretrained(model_path).cpu().eval()
-#tokenizer = AlbertTokenizer.from_pretrained(tokenizer_path)
+model = AlbertForSequenceClassification.from_pretrained(model_path).cpu().eval()
+tokenizer = AlbertTokenizer.from_pretrained(tokenizer_path)
 
-model = AlbertForSequenceClassification.from_pretrained("hf-tiny-model-private/tiny-random-AlbertForSequenceClassification")
-tokenizer = AlbertTokenizer.from_pretrained("hf-tiny-model-private/tiny-random-AlbertForSequenceClassification")
+#model = AlbertForSequenceClassification.from_pretrained("hf-tiny-model-private/tiny-random-AlbertForSequenceClassification")
+#tokenizer = AlbertTokenizer.from_pretrained("hf-tiny-model-private/tiny-random-AlbertForSequenceClassification")
 
 #from transformers import AutoTokenizer, AutoModel
 #tokenizer = AutoTokenizer.from_pretrained("line-corporation/line-distilbert-base-japanese", trust_remote_code=True)
@@ -192,11 +192,11 @@ def predict(text):
     # 推論
     with torch.no_grad():
         app.logger.debug("現在の日時13: %s", datetime.now())
-
+        '''
         # token_type_ids を削除
         if 'token_type_ids' in input_encodings:
             del input_encodings['token_type_ids']
-
+        '''
         outputs = model(**input_encodings)
         app.logger.debug("現在の日時14: %s", datetime.now())
         logits = outputs.logits
