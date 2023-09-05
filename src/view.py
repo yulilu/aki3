@@ -148,7 +148,8 @@ def generatedResponse(response):
 model_path = './src/model_files'
 tokenizer_path = './src/tokenizer_files'
 
-model = AlbertForSequenceClassification.from_pretrained(model_path).cpu().eval()
+#model = AlbertForSequenceClassification.from_pretrained(model_path).cpu().eval()
+model = AlbertForSequenceClassification.from_pretrained(model_path).cpu()
 tokenizer = AlbertTokenizer.from_pretrained(tokenizer_path)
 
 #model = AlbertForSequenceClassification.from_pretrained("hf-tiny-model-private/tiny-random-AlbertForSequenceClassification")
