@@ -184,7 +184,10 @@ def predict(text):
     # テキストのエンコード
     input_encodings = tokenizer(
         text,
-        return_tensors='pt'
+        return_tensors='pt',
+        max_length=70, 
+        padding='max_length',
+        truncation=True
     )
     #app.logger.debug("現在の日時12: %s", datetime.now())
     # 推論
@@ -223,7 +226,7 @@ def upload_file():
                 #wisper AIに音源データを文字起こしさせる
                 #transcription = openai.Audio.transcribe("whisper-1", f)
                 #txt = transcription['text']
-                txt = "This is a pen"
+                txt = "サンプルテキスト"
             #ここで取得した音声データの文字データtxtをベースに推論を実施
 
             from datetime import datetime
