@@ -149,7 +149,7 @@ model_path = './src/model_files'
 tokenizer_path = './src/tokenizer_files'
 
 #model = AlbertForSequenceClassification.from_pretrained(model_path).cpu().eval()
-model = AlbertForSequenceClassification.from_pretrained(model_path).cpu()
+model = AlbertForSequenceClassification.from_pretrained(model_path).cpu().eval()
 tokenizer = AlbertTokenizer.from_pretrained(tokenizer_path)
 
 #model = AlbertForSequenceClassification.from_pretrained("hf-tiny-model-private/tiny-random-AlbertForSequenceClassification")
@@ -184,10 +184,7 @@ def predict(text):
     # テキストのエンコード
     input_encodings = tokenizer(
         text,
-        return_tensors='pt',
-        max_length=70, 
-        padding='max_length',
-        truncation=True
+        return_tensors='pt'
     )
     #app.logger.debug("現在の日時12: %s", datetime.now())
     # 推論
